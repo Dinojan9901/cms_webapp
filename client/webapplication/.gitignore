@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+!client/webapplication/node_modules/
+!client/webapplication/build/

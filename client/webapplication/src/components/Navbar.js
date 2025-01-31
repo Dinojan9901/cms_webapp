@@ -31,6 +31,11 @@ const Navbar = ({ title = "CMS" }) => {
                         {user ? (
                             <>
                             <li className="nav-item">
+                                <Link className="nav-link" to="/mycontacts">
+                                    All Contacts
+                                </Link>
+                            </li>
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/create">
                                     Create
                                 </Link>

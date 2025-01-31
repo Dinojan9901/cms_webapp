@@ -30,8 +30,12 @@ const Navbar = ({ title = "CMS" }) => {
                     <ul className="navbar-nav ms-auto">
                         {user ? (
                             <>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/create">
+                                    Create
+                                </Link>
+                            </li>
                             <li className="nav-item"
-                                
                                     onClick={() => {
                                         setUser(null);
                                         localStorage.clear();

@@ -6,6 +6,7 @@ import { ToastContextProvider } from "./context/ToastContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CreateContact from "./pages/CreateContact";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/create" element={<CreateContact />} />
           </Routes>
         </Layout>
       </AuthContextProvider>

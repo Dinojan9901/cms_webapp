@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import Spinner from "../components/Spinner";
 import ToastContext from "../context/ToastContext";
+import { Link } from "react-router-dom";
 
 const AllContact = () => {
     const { toast } = useContext(ToastContext);
@@ -49,6 +50,7 @@ const AllContact = () => {
         });
         const result = await res.json();
         if (!result.error) {
+          
           setContacts(result.myContacts);
           toast.success("Deleted contact");
           
@@ -120,6 +122,12 @@ const AllContact = () => {
         </Modal.Body>
 
         <Modal.Footer>
+        <Link
+            className="btn btn-info"
+            to={`/edit/${modalData._id}`}
+          >
+            Edit
+          </Link>
             <button
             className="btn btn-danger"
             onClick={() => deleteContact(modalData._id)}

@@ -26,7 +26,8 @@ router.post("/contact", auth, async (req, res) => {
       
           return res.status(201).json({ ...result._doc });
     } catch (err) {
-        console.log(err);
+      console.error("Error saving contact:", err);
+      return res.status(500).json({ error: "Internal Server Error" });
         }
     });
 
@@ -89,11 +90,17 @@ router.delete("/delete/:id", auth, async (req, res) => {
           .json({ error: "you can't delete other people contacts!" });
   
       const result = await Contact.deleteOne({ _id: id })
-  
-      return res.status(200).json({ ...contact._doc });
-    } catch (err) {
-      console.log(err);
-    }
-  });
+      const myContacts = await Contact.find({ postedBy: req.user._id }).populate(
+        "postedBy",
+        "-password"
+      );
+
+      return res
+      .status(200)
+      .json({ ...contact._doc, myContacts: myContacts.reverse() });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 module.exports = router;
